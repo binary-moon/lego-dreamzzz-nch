@@ -70,7 +70,7 @@ export const Intro = () => {
         />
         <img
           src={introFrame}
-          className="absolute top-0 left-0 w-full h-auto object-contain"
+          className="absolute -top-[2px] left-0 w-full h-auto object-contain"
           alt="intro frame"
         />
         <motion.img

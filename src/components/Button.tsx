@@ -13,7 +13,7 @@ export const Button: React.FC<ButtonProps> = ({
   className,
   type,
 }) => {
-  const buttonClasses = `bg-primary text-white text-[25px]/[25px] font-black italic py-3 px-4 rounded uppercase rounded-lg w-full ${className}`;
+  const buttonClasses = `bg-primary text-white text-[25px]/[25px] font-black italic py-3 px-4 rounded uppercase rounded-lg ${className}`;
 
   return (
     <button className={buttonClasses} type={type} onClick={onClick}>
