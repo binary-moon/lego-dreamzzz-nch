@@ -78,20 +78,6 @@ export const Intro = () => {
     },
   };
 
-  const bottomRightToTopLeftVariants = {
-    hidden: { x: "50%", y: "100%", opacity: 0 },
-    visible: {
-      x: 0,
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        damping: 15,
-        stiffness: 80,
-      },
-    },
-  };
-
   return (
     <div>
       <img
