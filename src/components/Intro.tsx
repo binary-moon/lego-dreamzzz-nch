@@ -10,7 +10,6 @@ import skullIsland from "../assets/images/skull-island.png";
 import islandWithDoor from "../assets/images/island-with-door.png";
 import legoCharacter from "../assets/images/lego-character.png";
 import theNeverWitch from "../assets/images/the-never-witch.png";
-import spiral from "../assets/images/spiral.png";
 
 import { Button } from "./Button";
 import { GlowingText } from "./GlowingText";
@@ -44,6 +43,55 @@ export const Intro = () => {
     },
   };
 
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const rightToLeftVariants = {
+    hidden: { x: "100%", opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+  };
+
+  const leftToRightVariants = {
+    hidden: { x: "-100%", opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+  };
+
+  const bottomRightToTopLeftVariants = {
+    hidden: { x: "50%", y: "100%", opacity: 0 },
+    visible: {
+      x: 0,
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        damping: 15,
+        stiffness: 80,
+      },
+    },
+  };
+
   return (
     <div>
       <img
@@ -65,40 +113,51 @@ export const Intro = () => {
           className="absolute -top-[2px] left-0 w-full h-auto object-contain"
           alt="intro frame"
         />
-        <motion.img
-          src={darkCharacters}
-          className="absolute top-[30dvh] w-[25dvh] h-auto -right-[19dvw] object-contain"
-          alt="Dark Characters"
-          animate={subtleFloatingAnimation}
-        />
         <img
           src={skullIsland}
           className="absolute top-[30dvh] -left-[9dvw] w-[10dvh] h-auto object-contain"
           alt="Skull Island"
-        />
-        <motion.img
-          src={islandWithDoor}
-          className="absolute top-[40dvh] -left-[0] w-[15dvh] h-auto object-contain"
-          alt="Island With Door"
-          animate={subtleWobblingAnimation}
-        />
-        <motion.img
-          src={legoCharacter}
-          className="absolute top-[45dvh] left-[7dvw] w-[8dvh] h-auto object-contain"
-          alt="Lego Character"
-          animate={subtleWobblingAnimation}
         />
         <img
           src={darkRockIsland}
           className="absolute bottom-0 right-0 w-[100dvw] h-auto translate-y-[24dvh] translate-x-[12dvw] object-contain"
           alt="Dark Rock Island"
         />
-        <motion.img
-          src={theNeverWitch}
-          className="absolute top-0 -right-[8dvw] w-[100dvh] h-auto object-contain"
-          alt="The Never Witch"
-          animate={floatingAnimation}
-        />
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.img
+            src={darkCharacters}
+            className="absolute top-[30dvh] w-[25dvh] h-auto -right-[19dvw] object-contain"
+            alt="Dark Characters"
+            variants={rightToLeftVariants}
+            animate={subtleFloatingAnimation}
+          />
+          <motion.img
+            src={islandWithDoor}
+            className="absolute top-[40dvh] -left-[0] w-[15dvh] h-auto object-contain"
+            alt="Island With Door"
+            variants={leftToRightVariants}
+            animate={subtleWobblingAnimation}
+          />
+          <motion.img
+            src={legoCharacter}
+            className="absolute top-[45dvh] left-[7dvw] w-[8dvh] h-auto object-contain"
+            alt="Lego Character"
+            variants={leftToRightVariants}
+            animate={subtleWobblingAnimation}
+          />
+          <motion.img
+            src={theNeverWitch}
+            className="absolute top-0 -right-[8dvw] w-[100dvh] h-auto object-contain"
+            alt="The Never Witch"
+            variants={rightToLeftVariants}
+            whileInView={floatingAnimation}
+            viewport={{ once: false }}
+          />
+        </motion.div>
       </div>
       <span className="flex flex-col items-end absolute right-8 top-[92px] -rotate-[8deg]">
         <span>
