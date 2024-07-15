@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { motion, useAnimationControls } from "framer-motion";
 
 import logo from "../assets/images/lego-lockup.png";
 import background from "../assets/images/sky-background.jpg";
@@ -10,11 +11,14 @@ import skullIsland from "../assets/images/skull-island.png";
 import islandWithDoor from "../assets/images/island-with-door.png";
 import legoCharacter from "../assets/images/lego-character.png";
 import theNeverWitch from "../assets/images/the-never-witch.png";
+import spiral from "../assets/images/spiral.png";
 
 import { Button } from "./Button";
 import { GlowingText } from "./GlowingText";
 
 export const Intro = () => {
+  const witchControls = useAnimationControls();
+
   const floatingAnimation = {
     y: [0, -20, 0],
     scale: [1.2, 1.2, 1.2],
@@ -35,7 +39,7 @@ export const Intro = () => {
   };
 
   const subtleWobblingAnimation = {
-    rotate: [-5, 5, -5],
+    rotate: [-1, 1, -1],
     transition: {
       duration: 6,
       repeat: Infinity,
@@ -78,6 +82,53 @@ export const Intro = () => {
     },
   };
 
+  const rightBottomToTopVariants = {
+    hidden: { x: "100%", y: "100%", opacity: 0 },
+    visible: {
+      x: "12dvh",
+      y: "24dvh",
+      opacity: 1,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+  };
+
+  const witchEntryAnimation = {
+    hidden: { x: "100%", y: "100%", opacity: 0 },
+    visible: {
+      x: 0,
+      y: 0,
+      opacity: 1,
+      scale: 1.2,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+        delay: 1.5,
+      },
+    },
+  };
+
+  const spiralRotationAnimation = {
+    rotate: 360,
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "linear",
+    },
+  };
+
+  useEffect(() => {
+    const sequence = async () => {
+      await witchControls.start("visible");
+      witchControls.start("floating");
+    };
+    sequence();
+  }, [witchControls]);
+
   return (
     <div>
       <img
@@ -89,9 +140,15 @@ export const Intro = () => {
         className="absolute bottom-0 left-0 w-screen h-[75dvh] bg-cover bg-right"
         style={{ backgroundImage: `url(${background})` }}
       >
+        <motion.img
+          src={spiral}
+          className="absolute top-[5vh] w-full h-auto right-0 object-contain mix-blend-multiply"
+          alt="spiral"
+          animate={spiralRotationAnimation}
+        />
         <img
           src={rocks}
-          className="absolute bottom-0 -translate-y-[6dvh] -translate-x-[0dvw] w-[40dvh] h-auto right-0 object-contain"
+          className="absolute bottom-0 -translate-y-[6dvh] -translate-x-[0dvw] w-[40dvh] h-auto right-0 object-contain "
           alt="rocks"
         />
         <img
@@ -99,16 +156,7 @@ export const Intro = () => {
           className="absolute -top-[2px] left-0 w-full h-auto object-contain"
           alt="intro frame"
         />
-        <img
-          src={skullIsland}
-          className="absolute top-[30dvh] -left-[9dvw] w-[10dvh] h-auto object-contain"
-          alt="Skull Island"
-        />
-        <img
-          src={darkRockIsland}
-          className="absolute bottom-0 right-0 w-[100dvw] h-auto translate-y-[24dvh] translate-x-[12dvw] object-contain"
-          alt="Dark Rock Island"
-        />
+
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -122,26 +170,45 @@ export const Intro = () => {
             animate={subtleFloatingAnimation}
           />
           <motion.img
-            src={islandWithDoor}
-            className="absolute top-[40dvh] -left-[0] w-[15dvh] h-auto object-contain"
-            alt="Island With Door"
+            src={skullIsland}
+            className="absolute top-[30dvh] -left-[9dvw] w-[10dvh] h-auto object-contain"
+            alt="Skull Island"
+            variants={leftToRightVariants}
+            animate={subtleFloatingAnimation}
+          />
+          <motion.div
             variants={leftToRightVariants}
             animate={subtleWobblingAnimation}
-          />
+          >
+            <img
+              src={islandWithDoor}
+              className="absolute top-[40dvh] -left-[0] w-[15dvh] h-auto object-contain"
+              alt="Island With Door"
+            />
+            <img
+              src={legoCharacter}
+              className="absolute top-[45dvh] left-[7dvw] w-[8dvh] h-auto object-contain"
+              alt="Lego Character"
+            />
+          </motion.div>
           <motion.img
-            src={legoCharacter}
-            className="absolute top-[45dvh] left-[7dvw] w-[8dvh] h-auto object-contain"
-            alt="Lego Character"
-            variants={leftToRightVariants}
-            animate={subtleWobblingAnimation}
+            src={darkRockIsland}
+            className="absolute bottom-0 right-0 w-[100dvw] h-auto translate-y-[24dvh] translate-x-[12dvw] object-contain"
+            alt="Dark Rock Island"
+            variants={rightBottomToTopVariants}
           />
+
           <motion.img
             src={theNeverWitch}
             className="absolute top-0 -right-[8dvw] w-[100dvh] h-auto object-contain"
             alt="The Never Witch"
-            variants={rightToLeftVariants}
-            whileInView={floatingAnimation}
-            viewport={{ once: false }}
+            initial="hidden"
+            animate={witchControls}
+            variants={{
+              hidden: witchEntryAnimation.hidden,
+              visible: witchEntryAnimation.visible,
+              floating: floatingAnimation,
+            }}
           />
         </motion.div>
       </div>
@@ -156,11 +223,18 @@ export const Intro = () => {
           <GlowingText text="Hunt" />
         </span>
       </span>
-      <Button
-        text="Start!"
-        className="absolute bottom-12 w-[66dvw] -translate-x-[50%]"
-        onClick={() => console.log("Start Game")}
-      />
+      <motion.div
+        className="absolute bottom-12 left-[50%]"
+        animate={{ opacity: 1, y: 0, x: "-50%" }}
+        initial={{ opacity: 0, y: 20, x: "-50%" }}
+        transition={{ duration: 0.3, easeInOut: "spring", delay: 2.5 }}
+      >
+        <Button
+          className="w-[66dvw]"
+          text="Start!"
+          onClick={() => console.log("Start Game")}
+        />
+      </motion.div>
     </div>
   );
 };
