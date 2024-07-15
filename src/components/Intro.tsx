@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, useAnimationControls } from "framer-motion";
 
 import logo from "../assets/images/lego-lockup.png";
@@ -15,8 +15,10 @@ import spiral from "../assets/images/spiral.png";
 
 import { Button } from "./Button";
 import { GlowingText } from "./GlowingText";
+import { TCModal } from "./TCModal";
 
 export const Intro = () => {
+  const [isTCShown, setIsTCShown] = useState(false);
   const witchControls = useAnimationControls();
 
   const floatingAnimation = {
@@ -232,9 +234,19 @@ export const Intro = () => {
         <Button
           className="w-[66dvw]"
           text="Start!"
-          onClick={() => console.log("Start Game")}
+          onClick={() => setIsTCShown(true)}
         />
       </motion.div>
+      {isTCShown && (
+        <motion.div
+          className="w-full h-full absolute top-0 left-0 py-8 px-6 "
+          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.3, easeInOut: "spring" }}
+        >
+          <TCModal />
+        </motion.div>
+      )}
     </div>
   );
 };

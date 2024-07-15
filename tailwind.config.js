@@ -5,6 +5,8 @@ export default {
     colors: {
       background: "#001C4A",
       primary: "#009CDD",
+      secondary: "#EF4156",
+      body: "#021C47",
       white: "#FFFFFF",
       black: "#000000",
     },
