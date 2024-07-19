@@ -9,6 +9,7 @@ export default {
       body: "#021C47",
       white: "#FFFFFF",
       black: "#000000",
+      grey: "#D9D9D9",
     },
     extend: {
       fontFamily: {

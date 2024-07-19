@@ -4,7 +4,10 @@ import { motion } from "framer-motion";
 import { Checkbox } from "./Checkbox";
 import { Button } from "./Button";
 
+import { useStore } from "../useStore";
+
 export const TCModal: React.FC = () => {
+  const setGameState = useStore((state) => state.setGameState);
   const [checkboxes, setCheckboxes] = useState([
     {
       id: 1,
@@ -72,7 +75,7 @@ export const TCModal: React.FC = () => {
           <Button
             className="w-[66dvw]"
             text="I've read and agree"
-            onClick={() => console.log("Start!")}
+            onClick={() => setGameState(1)}
           />
         </motion.div>
       )}
