@@ -10,12 +10,29 @@ export default {
       white: "#FFFFFF",
       black: "#000000",
       grey: "#D9D9D9",
+      lightgrey: "#E1E1E1",
     },
     extend: {
       fontFamily: {
         external: ["CeraCondensedPro", "sans-serif"],
       },
+      textShadow: {
+        custom: "0px 0px 14px #009CDD",
+      },
+      boxShadow: {
+        custom: "0px 0px 26px 0px #009CDD",
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        ".text-shadow-custom": {
+          textShadow: "0px 0px 14px #009CDD",
+        },
+      };
+
+      addUtilities(newUtilities, ["responsive", "hover"]);
+    },
+  ],
 };

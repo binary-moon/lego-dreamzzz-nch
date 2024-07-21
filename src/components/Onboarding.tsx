@@ -11,6 +11,8 @@ import { OnboardingStep2 } from "./OnboardingStep2";
 import { OnboardingStep3 } from "./OnboardingStep3";
 import { Button } from "./Button";
 
+import { useStore } from "../useStore";
+
 import {
   containerVariants,
   bottomToTopVariants,
@@ -22,10 +24,13 @@ interface Props {
 
 export const Onboarding: React.FC<Props> = () => {
   const [onboardingPage, setOnboardingPage] = useState(0);
+  const setGameState = useStore((state) => state.setGameState);
 
   const handleNext = () => {
     if (onboardingPage !== 2) {
       setOnboardingPage((prev) => prev + 1);
+    } else {
+      setGameState(2);
     }
   };
 
@@ -129,7 +134,12 @@ export const Onboarding: React.FC<Props> = () => {
           </motion.div>
           <motion.div variants={bottomToTopVariants}>
             {onboardingPage !== 2 && (
-              <button className="italic font-black">SKIP INTRO →</button>
+              <button
+                className="italic font-black"
+                onClick={() => setGameState(2)}
+              >
+                SKIP INTRO →
+              </button>
             )}
           </motion.div>
         </motion.div>

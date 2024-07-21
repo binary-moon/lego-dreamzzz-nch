@@ -87,6 +87,19 @@ export const bottomToTopVariants = {
   },
 };
 
+export const buttonVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      damping: 12,
+      stiffness: 100,
+    },
+  },
+};
+
 export const fadeInVariants = {
   hidden: { opacity: 0 },
   visible: {

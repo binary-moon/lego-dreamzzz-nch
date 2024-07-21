@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export type GameDifficulty = "easy" | "standard" | "hard";
+export type GameDifficulty = "easy" | "normal" | "hard";
 export type PlayAreaSize = "small" | "medium" | "large";
 
 export interface AppState {
@@ -13,9 +13,9 @@ export interface AppState {
 }
 
 export const useStore = create<AppState>((set) => ({
-  gameState: 0,
+  gameState: 1,
   setGameState: (state) => set({ gameState: state }),
-  gameDifficulty: "standard",
+  gameDifficulty: "normal",
   setGameDifficulty: (difficulty) => set({ gameDifficulty: difficulty }),
   playAreaSize: "medium",
   setPlayAreaSize: (size) => set({ playAreaSize: size }),
