@@ -50,9 +50,15 @@ export const SelectPlayArea: React.FC = () => {
             <motion.img
               src={title}
               alt="Choose your difficulty level"
-              className="w-[60%] h-auto object-contain z-40 absolute -top-[0]"
+              className="w-[60%] h-auto object-contain z-40 absolute -top-0"
             />
             <div className="mt-8">
+              <motion.img
+                key="small"
+                src={playAreaSmall}
+                alt="Small play area"
+                className="opacity-0"
+              />
               <AnimatePresence mode="wait">
                 {playAreaSize === "small" && (
                   <motion.img
@@ -63,6 +69,7 @@ export const SelectPlayArea: React.FC = () => {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
+                    className="absolute top-8"
                   />
                 )}
                 {playAreaSize === "medium" && (
@@ -74,6 +81,7 @@ export const SelectPlayArea: React.FC = () => {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
+                    className="absolute top-8"
                   />
                 )}
                 {playAreaSize === "large" && (
@@ -85,6 +93,7 @@ export const SelectPlayArea: React.FC = () => {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
+                    className="absolute top-8"
                   />
                 )}
               </AnimatePresence>
