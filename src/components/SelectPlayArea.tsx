@@ -49,10 +49,10 @@ export const SelectPlayArea: React.FC = () => {
             <motion.img
               src={title}
               alt="Choose your difficulty level"
-              className="w-[60%] h-auto object-contain z-40"
+              className="w-[60%] h-auto object-contain z-40 absolute -top-[5dvh]"
               variants={bottomToTopVariants}
             />
-            <div className="-mt-24 ">
+            <div>
               <AnimatePresence mode="wait">
                 {playAreaSize === "small" && (
                   <motion.img
