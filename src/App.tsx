@@ -4,6 +4,7 @@ import "./App.css";
 import { Intro } from "./components/Intro";
 import { Onboarding } from "./components/Onboarding";
 import { SelectDifficulty } from "./components/SelectDifficulty";
+import { SelectPlayArea } from "./components/SelectPlayArea";
 import { useStore } from "./useStore";
 
 // Assuming gameState is of type number
@@ -57,7 +58,7 @@ function App(): JSX.Element {
             exit={{ opacity: 0, x: -200 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            {/* Game component */}
+            <SelectPlayArea />
           </motion.div>
         )}
       </AnimatePresence>
