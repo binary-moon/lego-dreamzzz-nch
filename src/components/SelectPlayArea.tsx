@@ -52,7 +52,7 @@ export const SelectPlayArea: React.FC = () => {
               className="w-[60%] h-auto object-contain z-40 absolute -top-[5dvh]"
               variants={bottomToTopVariants}
             />
-            <div>
+            <div className="min-h-[314px]">
               <AnimatePresence mode="wait">
                 {playAreaSize === "small" && (
                   <motion.img
