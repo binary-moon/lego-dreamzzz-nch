@@ -75,7 +75,7 @@ const imageUrls = [
 function App(): JSX.Element {
   const imagesLoaded = usePreloadImages(imageUrls);
   const gameState = useStore((state) => state.gameState) as number; // Explicitly cast if necessary
-  if (imagesLoaded) {
+  if (!imagesLoaded) {
     return (
       <div className="flex flex-col w-full h-full items-center uppercase font-black italic justify-center text-3xl absolute top-0 left-0 bg-background text-white overflow-hidden font-external">
         Loading...
