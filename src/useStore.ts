@@ -13,7 +13,7 @@ export interface AppState {
 }
 
 export const useStore = create<AppState>((set) => ({
-  gameState: 3,
+  gameState: 0,
   setGameState: (state) => set({ gameState: state }),
   gameDifficulty: "normal",
   setGameDifficulty: (difficulty) => set({ gameDifficulty: difficulty }),
