@@ -23,7 +23,7 @@ export const SelectDifficulty: React.FC = () => {
     <div className="flex flex-col w-full h-full absolute top-0 left-0">
       <AnimatePresence>
         <motion.div
-          className="flex flex-col w-full h-full items-center justify-between pt-6 pb-8  px-[30px] bg-cover bg-center"
+          className="flex flex-col w-full h-full items-center justify-between pt-[3dvh] pb-8  px-[30px] bg-cover bg-center"
           style={{ backgroundImage: `url(${backgroundPattern})` }}
           variants={containerVariants}
           initial="hidden"
@@ -32,7 +32,7 @@ export const SelectDifficulty: React.FC = () => {
           <img
             src={logo}
             alt="Lego - Dreamzzz"
-            className="w-[40%] h-auto object-contain"
+            className="w-[40dvw] h-auto object-contain"
           />
           <motion.img
             src={title}

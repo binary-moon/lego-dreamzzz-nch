@@ -45,10 +45,10 @@ export const TCModal: React.FC = () => {
 
   return (
     <div className="bg-white w-full h-full flex flex-col gap-8  py-6 px-12">
-      <span className="text-[50px] text-secondary italic black">
+      <span className="text-[50px]/[1] text-secondary italic black">
         HEY PARENTS
       </span>
-      <span className="text-body italic black text-[20px]/[22px] ">
+      <span className="text-body italic black text-[20px]/[22px] -mx-5">
         Before starting parents need to agree to our T&Cs. We recommend that
         parents also help their child through game-play options and device
         approvals.

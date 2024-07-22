@@ -26,7 +26,7 @@ export const PlayAreaSelector: React.FC<PlayAreaSelectorProps> = ({
     return modifiedClasses;
   };
   return (
-    <div className="border-2 border-white rounded-lg">
+    <div className="flex border-2 border-white rounded-lg">
       {playAreaSizeOptions.map((option, index) => (
         <button
           className={getOptionClasses(playAreaSize === option, index)}

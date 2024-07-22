@@ -101,7 +101,7 @@ export const Onboarding: React.FC<Props> = () => {
         <img
           src={logo}
           alt="Lego - Dreamzzz"
-          className="absolute top-[3dvh] left-[50%] -translate-x-[50%] w-[40%] h-auto object-contain"
+          className="absolute top-[3dvh] left-[50%] -translate-x-[50%] w-[40dvw] h-auto object-contain"
         />
         <motion.div
           className="absolute top-[79dvh] w-full flex flex-col items-center gap-5"

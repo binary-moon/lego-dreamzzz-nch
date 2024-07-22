@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   containerVariants,
   bottomToTopVariants,
+  bottomToTopVariantsPlaySize,
 } from "../utilities/animations";
 
 import { useStore, PlayAreaSize } from "../useStore";
@@ -31,7 +32,7 @@ export const SelectPlayArea: React.FC = () => {
     <div className="flex flex-col w-full h-full absolute top-0 left-0">
       <AnimatePresence>
         <motion.div
-          className="flex flex-col w-full h-full items-center justify-between pt-6 pb-8  px-[30px] bg-cover bg-center"
+          className="flex flex-col w-full h-full items-center pt-[3dvh] pb-8  px-[30px] bg-cover bg-center"
           style={{ backgroundImage: `url(${backgroundPattern})` }}
           variants={containerVariants}
           initial="hidden"
@@ -40,19 +41,18 @@ export const SelectPlayArea: React.FC = () => {
           <img
             src={logo}
             alt="Lego - Dreamzzz"
-            className="w-[40%] h-auto object-contain"
+            className="w-[40dvw] h-auto object-contain"
           />
           <motion.div
-            className="w-full flex flex-col items-center"
-            variants={bottomToTopVariants}
+            className="w-full flex flex-col items-center absolute top-[50%] -translate-y-[50%]"
+            variants={bottomToTopVariantsPlaySize}
           >
             <motion.img
               src={title}
               alt="Choose your difficulty level"
-              className="w-[60%] h-auto object-contain z-40 absolute -top-[5dvh]"
-              variants={bottomToTopVariants}
+              className="w-[60%] h-auto object-contain z-40 -top-[0]"
             />
-            <div className="min-h-[314px]">
+            <div className="-mt-24">
               <AnimatePresence mode="wait">
                 {playAreaSize === "small" && (
                   <motion.img
@@ -129,7 +129,10 @@ export const SelectPlayArea: React.FC = () => {
               )}
             </AnimatePresence>
           </motion.div>
-          <motion.div variants={bottomToTopVariants}>
+          <motion.div
+            className="absolute bottom-8"
+            variants={bottomToTopVariants}
+          >
             <Button
               className="w-[66dvw]"
               text="Ok"
