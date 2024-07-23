@@ -5,6 +5,7 @@ import { Intro } from "./components/Intro";
 import { Onboarding } from "./components/Onboarding";
 import { SelectDifficulty } from "./components/SelectDifficulty";
 import { SelectPlayArea } from "./components/SelectPlayArea";
+import { FinalScreen } from "./components/FinalScreen";
 import { useStore } from "./useStore";
 
 import usePreloadImages from "./hooks/usePreloadImages";
@@ -125,6 +126,18 @@ function App(): JSX.Element {
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
             <SelectPlayArea />
+          </motion.div>
+        )}
+        {gameState === 4 && (
+          <motion.div
+            key="game"
+            className="flex flex-col w-full h-full absolute top-0 left-0 overflow-hidden"
+            initial={{ opacity: 0, x: 200 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -200 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <FinalScreen />
           </motion.div>
         )}
       </AnimatePresence>

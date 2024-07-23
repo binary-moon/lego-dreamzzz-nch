@@ -75,7 +75,7 @@ export const SelectDifficulty: React.FC = () => {
             </motion.div>
           </motion.div>
           <motion.span
-            className="text-[18px] font-normal text-lightgrey"
+            className="text-[18px]/[23px] font-normal text-lightgrey"
             variants={bottomToTopVariants}
           >
             Choose NORMAL for default game settings. EASY for natural dreamers

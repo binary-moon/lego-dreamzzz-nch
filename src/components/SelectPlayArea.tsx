@@ -28,6 +28,7 @@ const playAreaVariants = {
 export const SelectPlayArea: React.FC = () => {
   const playAreaSize = useStore((state) => state.playAreaSize);
   const playAreaSizeOptions: PlayAreaSize[] = ["small", "medium", "large"];
+  const setGameState = useStore((state) => state.setGameState);
   return (
     <div className="flex flex-col w-full h-full absolute top-0 left-0">
       <AnimatePresence>
@@ -145,7 +146,7 @@ export const SelectPlayArea: React.FC = () => {
             <Button
               className="w-[66dvw]"
               text="Ok"
-              onClick={() => console.log("Ok")}
+              onClick={() => setGameState(4)}
             />
           </motion.div>
         </motion.div>
