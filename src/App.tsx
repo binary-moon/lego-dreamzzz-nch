@@ -39,6 +39,18 @@ import theNeverWitch2 from "./assets/images/The_Never_Witch_2.png";
 import onboardSpeechCloud2 from "./assets/images/Onboard_Speech_Cloud_2.svg";
 import onboardSpeechCloud3 from "./assets/images/Onboard_Speech_Cloud_3.svg";
 import lightChracterIsland4 from "./assets/images/light_character_island_4.png";
+import endScreenTextCloud from "./assets/images/End_Screen_Text_Cloud.svg";
+import endScreenImage from "./assets/images/End_Screen_Image.png";
+import cloud0of5 from "./assets/images/0of5Cloud.png";
+import cloud1of5 from "./assets/images/1of5Cloud.png";
+import cloud2of5 from "./assets/images/2of5Cloud.png";
+import cloud3of5 from "./assets/images/3of5Cloud.png";
+import cloud4of5 from "./assets/images/4of5Cloud.png";
+import cloud5of5 from "./assets/images/5of5Cloud.png";
+import legoCharacter2 from "./assets/images/Lego_Character_2.png";
+import mateoPointing from "./assets/images/Mateo_Pointing.png";
+import mainCTAButton from "./assets/images/Main_CTA_Button.svg";
+import primeVideoLogo from "./assets/images/Prime_Video_Logo.svg";
 
 const imageUrls = [
   logo,
@@ -70,6 +82,18 @@ const imageUrls = [
   onboardSpeechCloud2,
   onboardSpeechCloud3,
   lightChracterIsland4,
+  endScreenTextCloud,
+  endScreenImage,
+  cloud0of5,
+  cloud1of5,
+  cloud2of5,
+  cloud3of5,
+  cloud4of5,
+  cloud5of5,
+  legoCharacter2,
+  mateoPointing,
+  mainCTAButton,
+  primeVideoLogo,
 ];
 
 // Assuming gameState is of type number
