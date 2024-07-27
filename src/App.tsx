@@ -6,6 +6,7 @@ import { Onboarding } from "./components/Onboarding";
 import { SelectDifficulty } from "./components/SelectDifficulty";
 import { SelectPlayArea } from "./components/SelectPlayArea";
 import { FinalScreen } from "./components/FinalScreen";
+import { Game } from "./components/Game";
 import { useStore } from "./useStore";
 
 import usePreloadImages from "./hooks/usePreloadImages";
@@ -39,18 +40,18 @@ import theNeverWitch2 from "./assets/images/The_Never_Witch_2.png";
 import onboardSpeechCloud2 from "./assets/images/Onboard_Speech_Cloud_2.svg";
 import onboardSpeechCloud3 from "./assets/images/Onboard_Speech_Cloud_3.svg";
 import lightChracterIsland4 from "./assets/images/light_character_island_4.png";
-import endScreenTextCloud from "./assets/images/End_Screen_Text_Cloud.svg";
 import endScreenImage from "./assets/images/End_Screen_Image.png";
-import cloud0of5 from "./assets/images/0of5Cloud.png";
-import cloud1of5 from "./assets/images/1of5Cloud.png";
-import cloud2of5 from "./assets/images/2of5Cloud.png";
-import cloud3of5 from "./assets/images/3of5Cloud.png";
-import cloud4of5 from "./assets/images/4of5Cloud.png";
-import cloud5of5 from "./assets/images/5of5Cloud.png";
 import legoCharacter2 from "./assets/images/Lego_Character_2.png";
 import mateoPointing from "./assets/images/Mateo_Pointing.png";
 import mainCTAButton from "./assets/images/Main_CTA_Button.svg";
 import primeVideoLogo from "./assets/images/Prime_Video_Logo.svg";
+import ResultBadge1 from "./assets/images/Result_Badge_1st.png";
+import ResultBadge2 from "./assets/images/Result_Badge_2nd.png";
+import ResultBadge3 from "./assets/images/Result_Badge_3rd.png";
+import ResultText1 from "./assets/images/Result_Text_1st.png";
+import ResultText2 from "./assets/images/Result_Text_2nd.png";
+import ResultText3 from "./assets/images/Result_Text_3rd.png";
+import playAgainButton from "./assets/images/play_again_button.png";
 
 const imageUrls = [
   logo,
@@ -82,32 +83,42 @@ const imageUrls = [
   onboardSpeechCloud2,
   onboardSpeechCloud3,
   lightChracterIsland4,
-  endScreenTextCloud,
   endScreenImage,
-  cloud0of5,
-  cloud1of5,
-  cloud2of5,
-  cloud3of5,
-  cloud4of5,
-  cloud5of5,
   legoCharacter2,
   mateoPointing,
   mainCTAButton,
   primeVideoLogo,
+  ResultBadge1,
+  ResultBadge2,
+  ResultBadge3,
+  ResultText1,
+  ResultText2,
+  ResultText3,
+  playAgainButton,
 ];
 
-// Assuming gameState is of type number
+// Assuming appState is of type number
 function App(): JSX.Element {
   usePreloadImages(imageUrls);
-  const gameState = useStore((state) => state.gameState) as number; // Explicitly cast if necessary
+  const appState = useStore((state) => state.appState) as number; // Explicitly cast if necessary
+  const gameState = useStore((state) => state.gameState);
 
   return (
     <div className="flex flex-col w-full h-full absolute top-0 left-0 bg-background text-white overflow-hidden font-external">
+      {gameState !== "off" && (
+        <div
+          className={`absolute top-0 left-0 w-full h-full ${
+            gameState === "on" ? "z-10" : "z-0"
+          }`}
+        >
+          <Game />
+        </div>
+      )}
       <AnimatePresence>
-        {gameState === 0 && (
+        {appState === 0 && (
           <motion.div
             key="intro"
-            className="flex flex-col w-full h-full absolute top-0 left-0 overflow-hidden"
+            className="flex flex-col w-full h-full absolute top-0 left-0 overflow-hidden bg-background"
             initial={{ opacity: 0, x: 0 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -200 }}
@@ -116,10 +127,10 @@ function App(): JSX.Element {
             <Intro />
           </motion.div>
         )}
-        {gameState === 1 && (
+        {appState === 1 && (
           <motion.div
             key="onboarding"
-            className="flex flex-col w-full h-full absolute top-0 left-0 overflow-hidden"
+            className="flex flex-col w-full h-full absolute top-0 left-0 overflow-hidden bg-background"
             initial={{ opacity: 0, x: 200 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -200 }}
@@ -128,10 +139,10 @@ function App(): JSX.Element {
             <Onboarding />
           </motion.div>
         )}
-        {gameState === 2 && (
+        {appState === 2 && (
           <motion.div
             key="onboarding"
-            className="flex flex-col w-full h-full absolute top-0 left-0 overflow-hidden"
+            className="flex flex-col w-full h-full absolute top-0 left-0 overflow-hidden bg-background"
             initial={{ opacity: 0, x: 200 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -200 }}
@@ -140,10 +151,10 @@ function App(): JSX.Element {
             <SelectDifficulty />
           </motion.div>
         )}
-        {gameState === 3 && (
+        {appState === 3 && (
           <motion.div
             key="game"
-            className="flex flex-col w-full h-full absolute top-0 left-0 overflow-hidden"
+            className="flex flex-col w-full h-full absolute top-0 left-0 overflow-hidden bg-background"
             initial={{ opacity: 0, x: 200 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -200 }}
@@ -152,10 +163,10 @@ function App(): JSX.Element {
             <SelectPlayArea />
           </motion.div>
         )}
-        {gameState === 4 && (
+        {appState === 4 && (
           <motion.div
             key="game"
-            className="flex flex-col w-full h-full absolute top-0 left-0 overflow-hidden"
+            className="flex flex-col w-full h-full absolute top-0 left-0 overflow-hidden bg-background"
             initial={{ opacity: 0, x: 200 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -200 }}

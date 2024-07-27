@@ -24,13 +24,13 @@ interface Props {
 
 export const Onboarding: React.FC<Props> = () => {
   const [onboardingPage, setOnboardingPage] = useState(0);
-  const setGameState = useStore((state) => state.setGameState);
+  const setAppState = useStore((state) => state.setAppState);
 
   const handleNext = () => {
     if (onboardingPage !== 2) {
       setOnboardingPage((prev) => prev + 1);
     } else {
-      setGameState(2);
+      setAppState(2);
     }
   };
 
@@ -136,7 +136,7 @@ export const Onboarding: React.FC<Props> = () => {
             {onboardingPage !== 2 && (
               <button
                 className="italic font-black"
-                onClick={() => setGameState(2)}
+                onClick={() => setAppState(2)}
               >
                 SKIP INTRO →
               </button>

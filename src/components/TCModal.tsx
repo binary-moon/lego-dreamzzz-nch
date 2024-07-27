@@ -7,7 +7,7 @@ import { Button } from "./Button";
 import { useStore } from "../useStore";
 
 export const TCModal: React.FC = () => {
-  const setGameState = useStore((state) => state.setGameState);
+  const setAppState = useStore((state) => state.setAppState);
   const [checkboxes, setCheckboxes] = useState([
     {
       id: 1,
@@ -75,7 +75,7 @@ export const TCModal: React.FC = () => {
           <Button
             className="w-[66dvw]"
             text="I've read and agree"
-            onClick={() => setGameState(1)}
+            onClick={() => setAppState(1)}
           />
         </motion.div>
       )}

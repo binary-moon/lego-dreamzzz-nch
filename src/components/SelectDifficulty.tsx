@@ -18,7 +18,7 @@ import backgroundPattern from "../assets/images/Background_Pattern.png";
 export const SelectDifficulty: React.FC = () => {
   const setGameDifficulty = useStore((state) => state.setGameDifficulty);
   const gameDifficulty = useStore((state) => state.gameDifficulty);
-  const setGameState = useStore((state) => state.setGameState);
+  const setAppState = useStore((state) => state.setAppState);
   return (
     <div className="flex flex-col w-full h-full absolute top-0 left-0">
       <AnimatePresence>
@@ -85,7 +85,7 @@ export const SelectDifficulty: React.FC = () => {
             <Button
               className="w-[66dvw]"
               text="Next"
-              onClick={() => setGameState(3)}
+              onClick={() => setAppState(3)}
             />
           </motion.div>
         </motion.div>

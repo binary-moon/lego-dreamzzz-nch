@@ -87,6 +87,20 @@ export const bottomToTopVariants = {
   },
 };
 
+export const bottomToTopRotatedVariants = {
+  hidden: { y: "100%", opacity: 0, rotate: "-9deg" },
+  visible: {
+    y: 0,
+    rotate: "-9deg",
+    opacity: 1,
+    transition: {
+      type: "spring",
+      damping: 12,
+      stiffness: 100,
+    },
+  },
+};
+
 export const bottomToTopCenteredVariants = {
   hidden: { y: "100%", x: "-50%", opacity: 0 },
   visible: {

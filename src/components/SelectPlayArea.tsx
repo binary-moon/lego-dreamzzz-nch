@@ -146,7 +146,7 @@ export const SelectPlayArea: React.FC = () => {
             <Button
               className="w-[66dvw]"
               text="Ok"
-              onClick={() => setGameState(4)}
+              onClick={() => setGameState("on")}
             />
           </motion.div>
         </motion.div>
