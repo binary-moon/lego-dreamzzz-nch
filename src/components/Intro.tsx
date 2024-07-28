@@ -53,13 +53,13 @@ export const Intro = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.1,
       },
     },
   };
 
   const rightToLeftVariants = {
-    hidden: { x: "100%", opacity: 0 },
+    hidden: { x: "50%", opacity: 0 },
     visible: {
       x: 0,
       opacity: 1,
@@ -72,7 +72,7 @@ export const Intro = () => {
   };
 
   const leftToRightVariants = {
-    hidden: { x: "-100%", opacity: 0 },
+    hidden: { x: "-50%", opacity: 0 },
     visible: {
       x: 0,
       opacity: 1,
@@ -85,7 +85,7 @@ export const Intro = () => {
   };
 
   const rightBottomToTopVariants = {
-    hidden: { x: "100%", y: "100%", opacity: 0 },
+    hidden: { x: "50%", y: "50%", opacity: 0 },
     visible: {
       x: "12dvh",
       y: "24dvh",
@@ -99,7 +99,7 @@ export const Intro = () => {
   };
 
   const witchEntryAnimation = {
-    hidden: { x: "100%", y: "100%", opacity: 0 },
+    hidden: { x: "50%", y: "50%", opacity: 0 },
     visible: {
       x: 0,
       y: 0,
@@ -109,7 +109,7 @@ export const Intro = () => {
         type: "spring",
         damping: 12,
         stiffness: 100,
-        delay: 1.5,
+        delay: 0.75,
       },
     },
   };
@@ -230,7 +230,7 @@ export const Intro = () => {
           className="absolute bottom-12 left-[50%]"
           animate={{ opacity: 1, y: 0, x: "-50%" }}
           initial={{ opacity: 0, y: 20, x: "-50%" }}
-          transition={{ duration: 0.3, easeInOut: "spring", delay: 2.5 }}
+          transition={{ duration: 0.3, easeInOut: "spring", delay: 1.5 }}
         >
           <Button
             className="w-[66dvw]"

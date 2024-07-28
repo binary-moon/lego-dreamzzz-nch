@@ -37,7 +37,7 @@ export const SelectDifficulty: React.FC = () => {
           <motion.img
             src={title}
             alt="Choose your difficulty level"
-            className="w-[60%] h-auto object-contain"
+            className="w-[71%] h-auto object-contain"
             variants={bottomToTopVariants}
           />
           <motion.div

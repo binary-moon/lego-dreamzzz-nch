@@ -11,7 +11,7 @@ import {
   containerVariants,
   rightToLeftVariants,
   leftToRightVariants,
-  fadeInVariants,
+  getFadeInVariants,
   getFloatingAnimation,
 } from "../utilities/animations";
 
@@ -49,16 +49,17 @@ export const OnboardingStep1: React.FC = () => {
       <motion.img
         src={legoCharacter}
         alt="Mateo"
-        className="absolute bottom-[calc(2dvh+150px)] left-[calc(-6dvw+90px)] w-[32dvw] h-auto object-contain"
+        // className="absolute bottom-[calc(2dvh+150px)] left-[calc(-6dvw+90px)] w-[32dvw] h-auto object-contain"
+        className="absolute bottom-[40dvw] left-[15dvw] w-[32dvw] h-auto object-contain"
         custom={true}
-        variants={fadeInVariants}
+        variants={getFadeInVariants(0.75)}
         animate={getFloatingAnimation(4, 0, 20)}
       />
       <motion.img
         src={onboardSpeechCloud1}
         alt="Hi I'm Mateo. My friends and I need your help"
         className="absolute top-[6dvh] right-[8dvw] w-[60%] h-auto object-contain"
-        variants={rightToLeftVariants}
+        variants={getFadeInVariants(0.85)}
       />
     </motion.div>
   );

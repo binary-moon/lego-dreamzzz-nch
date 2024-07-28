@@ -15,6 +15,7 @@ import {
   leftToRightVariants,
   bottomRightToTopVariants,
   getFloatingAnimation,
+  getFadeInVariants,
 } from "../utilities/animations";
 
 export const OnboardingStep2: React.FC = () => {
@@ -83,7 +84,7 @@ export const OnboardingStep2: React.FC = () => {
         src={onboardSpeechCloud2}
         alt="Dream world is under attack from the Never Witch"
         className="absolute top-[8dvh] left-[3dvw] w-[60%] h-auto object-contain"
-        variants={leftToRightVariants}
+        variants={getFadeInVariants(0.85)}
       />
     </motion.div>
   );

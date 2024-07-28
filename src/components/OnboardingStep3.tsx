@@ -12,6 +12,7 @@ import {
   rightToLeftVariants,
   leftToRightVariants,
   getFloatingAnimation,
+  getFadeInVariants,
 } from "../utilities/animations";
 
 export const OnboardingStep3: React.FC = () => {
@@ -56,7 +57,7 @@ export const OnboardingStep3: React.FC = () => {
         src={onboardSpeechCloud3}
         alt="Help us catch her and the nightmare creatures"
         className="absolute top-[8dvh] right-[3dvw] w-[60%] h-auto object-contain"
-        variants={rightToLeftVariants}
+        variants={getFadeInVariants(0.75)}
       />
     </motion.div>
   );

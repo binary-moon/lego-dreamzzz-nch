@@ -6,11 +6,11 @@ interface GlowingTextProps {
 
 export const GlowingText: React.FC<GlowingTextProps> = ({ text }) => {
   const baseGlowSize = 8;
-  const baseOffsetSize = 1;
+  const baseOffsetSize = 0.5;
   const intensityMultiplier = 2;
 
-  const color1 = "rgba(255, 255, 255, 0.4)";
-  const color2 = "rgba(0, 255, 255, 0.4)";
+  const color1 = "rgba(0, 156, 221, 0.3)";
+  const color2 = "rgba(0, 156, 221, 0.3)";
 
   const createGlowShadow = (
     glowSize: number,
@@ -50,7 +50,7 @@ export const GlowingText: React.FC<GlowingTextProps> = ({ text }) => {
   ];
 
   return (
-    <div className="italic font-black uppercase text-[8vh]/[6vh]">
+    <div className="relative italic font-black uppercase text-[8vh]/[6vh]">
       {text.split("").map((char, index) => (
         <motion.span
           key={index}
@@ -68,6 +68,13 @@ export const GlowingText: React.FC<GlowingTextProps> = ({ text }) => {
           {char}
         </motion.span>
       ))}
+      <div className="absolute text-white top-0 left-0 italic font-black uppercase text-[8vh]/[6vh]">
+        {text.split("").map((char, index) => (
+          <motion.span key={index} className="inline-block">
+            {char}
+          </motion.span>
+        ))}
+      </div>
     </div>
   );
 };
