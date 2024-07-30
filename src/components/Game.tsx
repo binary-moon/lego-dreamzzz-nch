@@ -18,11 +18,9 @@ export function Game() {
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       if (event.data.action === "exitAR") {
+        setGameState("inactive");
         setAppState(4);
       } else if (event.data.action === "change-settings") {
-        setGameState("inactive");
-        setAppState(2);
-      } else if (event.data.action === "restart") {
         setGameState("inactive");
         setAppState(2);
       }
