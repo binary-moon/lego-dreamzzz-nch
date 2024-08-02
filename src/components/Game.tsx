@@ -23,6 +23,9 @@ export function Game() {
       } else if (event.data.action === "change-settings") {
         setGameState("inactive");
         setAppState(2);
+      } else if (event.data.action === "loadedAr") {
+        sendMessageToIframe({ action: "updateGameDifficulty", gameDifficulty });
+        sendMessageToIframe({ action: "updatePlayAreaSize", playAreaSize });
       }
     };
 
@@ -31,7 +34,7 @@ export function Game() {
     return () => {
       window.removeEventListener("message", handleMessage);
     };
-  }, [setAppState, setGameState]);
+  }, [setAppState, setGameState, gameDifficulty, playAreaSize]);
 
   const sendMessageToIframe = (message: IframeMessage) => {
     if (iframeRef.current && iframeRef.current.contentWindow) {
