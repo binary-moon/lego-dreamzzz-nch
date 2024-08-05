@@ -105,12 +105,14 @@ export const FinalScreen: React.FC = () => {
             className="absolute top-[46dvh] -right-[3dvw] w-[17dvh] h-auto object-contain"
             variants={rightToLeftVariants}
           />
-          <motion.button
+          <motion.a
             className="absolute top-[70dvh] w-[70dvw]"
             variants={bottomToTopVariants}
+            href="https://www.primevideo.com/dp/0G3TMG0K91CV2RBI29GCPXKN4L"
+            target="_blank"
           >
             <img src={mainCTAButton} alt="Watch Lego Dreamzzz S2" />
-          </motion.button>
+          </motion.a>
           <motion.img
             src={primeVideoLogo}
             alt="Prime Video"
