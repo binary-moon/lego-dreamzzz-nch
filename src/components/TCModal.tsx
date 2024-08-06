@@ -7,17 +7,17 @@ import { useStore } from "../useStore";
 export const TCModal: React.FC = () => {
   const setAppState = useStore((state) => state.setAppState);
 
-  const itemStyles = "text-body text-[20px]/[23px] text-left mb-6";
+  const itemStyles = "text-body text-[20px]/[23px] text-left mb-2";
 
   return (
-    <div className="bg-white w-full h-full flex flex-col gap-8  py-6 px-12">
-      <span className="text-[50px]/[1] text-secondary italic black">
+    <div className="bg-white w-full h-full flex flex-col gap-6  py-6 px-12">
+      <span className="text-[25px]/[25px] text-secondary italic black">
         HEY PARENTS
       </span>
-      <span className="text-body italic black text-[23px]/[26px] -mx-5">
+      <span className="text-body italic black text-[20px]/[23px] -mx-5">
         Before starting please take a second to take note of the below points.
       </span>
-      <div className="flex flex-col gap-6 -mr-5">
+      <div className="flex flex-col -mr-5">
         <ul className="list-disc">
           <li className={itemStyles}>
             This game requires access to camera and device data during play.
@@ -37,7 +37,7 @@ export const TCModal: React.FC = () => {
       </div>
 
       <motion.div
-        className="absolute bottom-24 left-[50%]"
+        className="absolute bottom-16 left-[50%]"
         animate={{ opacity: 1, y: 0, x: "-50%" }}
         initial={{ opacity: 0, y: 20, x: "-50%" }}
         transition={{ duration: 0.3, easeInOut: "spring" }}

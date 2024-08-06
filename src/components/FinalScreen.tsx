@@ -119,7 +119,7 @@ export const FinalScreen: React.FC = () => {
             className="absolute top-[81dvh] left-[50%] -translate-x-[50%] w-[37dvw] h-auto object-contain"
             variants={bottomToTopCenteredVariants}
           />
-          <span className="absolute font-400 text-[3.8dvw]/[21px] top-[91dvh] px-5 pb-[35px]">
+          <span className="absolute font-400 text-[3.4dvw]/[21px] top-[91dvh] px-5 pb-[35px]">
             Prime membership required. Restrictions apply. Amazon, Prime Video,
             and all related marks are trademarks of Amazon.com, Inc. and its
             affiliates.
