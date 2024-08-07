@@ -50,8 +50,8 @@ export const Intro = () => {
   };
 
   const glimmerAnimation = {
-    scale: [1.5, 1.7, 1.5, 1.5, 1.5, 1.7, 1.5],
-    opacity: [0.75, 0.4, 0, 0, 0, 0.4, 0.75],
+    scale: [1.5, 1.75, 1.5, 1.5, 1.5, 1.75, 1.5],
+    opacity: [0.9, 0.55, 0, 0, 0, 0.55, 0.9],
     transition: {
       duration: 5,
       repeat: Infinity,
