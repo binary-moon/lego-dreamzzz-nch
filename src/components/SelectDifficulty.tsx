@@ -2,6 +2,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Button } from "./Button";
+import { trackEvent } from "../utilities/tracking";
 
 import { useStore } from "../useStore";
 
@@ -19,6 +20,12 @@ export const SelectDifficulty: React.FC = () => {
   const setGameDifficulty = useStore((state) => state.setGameDifficulty);
   const gameDifficulty = useStore((state) => state.gameDifficulty);
   const setAppState = useStore((state) => state.setAppState);
+
+  const handleButtonClick = () => {
+    setAppState(3);
+    trackEvent("difficulty_selected", { difficulty: gameDifficulty });
+  };
+
   return (
     <div className="flex flex-col w-full h-full absolute top-0 left-0">
       <AnimatePresence>
@@ -85,7 +92,7 @@ export const SelectDifficulty: React.FC = () => {
             <Button
               className="w-[66dvw]"
               text="Next"
-              onClick={() => setAppState(3)}
+              onClick={handleButtonClick}
             />
           </motion.div>
         </motion.div>

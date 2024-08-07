@@ -18,6 +18,7 @@ import playAreaLarge from "../assets/images/Play_Area_Large.png";
 
 import { PlayAreaSelector } from "./PlayAreaSelector";
 import { Button } from "./Button";
+import { trackEvent } from "../utilities/tracking";
 
 const playAreaVariants = {
   hidden: { opacity: 0, x: -100 },
@@ -29,6 +30,12 @@ export const SelectPlayArea: React.FC = () => {
   const playAreaSize = useStore((state) => state.playAreaSize);
   const playAreaSizeOptions: PlayAreaSize[] = ["small", "medium", "large"];
   const setGameState = useStore((state) => state.setGameState);
+
+  const handleButtonClick = () => {
+    setGameState("on");
+    trackEvent("play_area_selected", { size: playAreaSize });
+  };
+
   return (
     <div className="flex flex-col w-full h-full absolute top-0 left-0">
       <AnimatePresence>
@@ -146,7 +153,7 @@ export const SelectPlayArea: React.FC = () => {
             <Button
               className="w-[66dvw]"
               text="Ok"
-              onClick={() => setGameState("on")}
+              onClick={handleButtonClick}
             />
           </motion.div>
         </motion.div>

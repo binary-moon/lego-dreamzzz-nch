@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import logo from "../assets/images/lego-lockup.png";
@@ -25,11 +25,18 @@ import {
   bottomToTopRotatedVariants,
 } from "../utilities/animations";
 
+import { trackEvent } from "../utilities/tracking";
+
 import { useStore } from "../useStore";
 
 export const FinalScreen: React.FC = () => {
   const gameRank = useStore((state) => state.gameRank);
   const setAppState = useStore((state) => state.setAppState);
+
+  useEffect(() => {
+    trackEvent("game_end", { rank: gameRank });
+  }, [gameRank]);
+
   return (
     <div className="flex flex-col w-full h-full absolute top-0 left-0">
       <AnimatePresence>
