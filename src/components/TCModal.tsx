@@ -30,8 +30,8 @@ export const TCModal: React.FC = () => {
             Please set a safe play area for your current surroundings.
           </li>
           <li className={itemStyles}>
-            This game runs best on iOS11+ or the recent versions of Chrome and
-            Firefox on Android.
+            This game runs best on iPhone 11+ or the recent versions of Chrome
+            and Firefox on Android.
           </li>
         </ul>
       </div>
