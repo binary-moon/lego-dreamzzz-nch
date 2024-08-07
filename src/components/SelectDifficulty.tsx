@@ -23,7 +23,7 @@ export const SelectDifficulty: React.FC = () => {
 
   const handleButtonClick = () => {
     setAppState(3);
-    trackEvent("difficulty_selected", { difficulty: gameDifficulty });
+    trackEvent("DifficultySelected", { difficulty: gameDifficulty });
   };
 
   return (

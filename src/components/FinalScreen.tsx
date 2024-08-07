@@ -34,7 +34,7 @@ export const FinalScreen: React.FC = () => {
   const setAppState = useStore((state) => state.setAppState);
 
   useEffect(() => {
-    trackEvent("game_end", { rank: gameRank });
+    trackEvent("GameEnd", { rank: gameRank });
   }, [gameRank]);
 
   return (

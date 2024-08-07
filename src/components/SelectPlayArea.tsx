@@ -33,7 +33,7 @@ export const SelectPlayArea: React.FC = () => {
 
   const handleButtonClick = () => {
     setGameState("on");
-    trackEvent("play_area_selected", { size: playAreaSize });
+    trackEvent("PlayAreaSelected", { size: playAreaSize });
   };
 
   return (
