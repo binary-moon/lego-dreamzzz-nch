@@ -13,6 +13,7 @@ export interface AppState {
   playAreaSize: PlayAreaSize;
   setPlayAreaSize: (size: PlayAreaSize) => void;
   gameRank: GameRank;
+  setGameRank: (rank: GameRank) => void;
   gameState: GameState;
   setGameState: (state: GameState) => void;
 }
@@ -25,6 +26,7 @@ export const useStore = create<AppState>((set) => ({
   playAreaSize: "medium",
   setPlayAreaSize: (size) => set({ playAreaSize: size }),
   gameRank: 1,
+  setGameRank: (rank) => set({ gameRank: rank }),
   gameState: "off",
   setGameState: (state) => set({ gameState: state }),
 }));

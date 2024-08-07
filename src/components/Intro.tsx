@@ -200,11 +200,8 @@ export const Intro = () => {
               alt="Dark Rock Island"
               variants={rightBottomToTopVariants}
             />
-
-            <motion.img
-              src={theNeverWitch}
-              className="absolute top-0 -right-[8dvw] w-[100dvh] h-auto object-contain"
-              alt="The Never Witch"
+            <motion.div
+              className="absolute top-0 -right-[8dvw] w-[54dvh]"
               initial="hidden"
               animate={witchControls}
               variants={{
@@ -212,7 +209,13 @@ export const Intro = () => {
                 visible: witchEntryAnimation.visible,
                 floating: floatingAnimation,
               }}
-            />
+            >
+              <motion.img
+                src={theNeverWitch}
+                className="w-full h-auto object-contain"
+                alt="The Never Witch"
+              />
+            </motion.div>
           </motion.div>
         </div>
         <span className="flex flex-col items-end absolute right-8 top-[92px] -rotate-[8deg]">

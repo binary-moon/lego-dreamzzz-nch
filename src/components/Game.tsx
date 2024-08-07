@@ -12,12 +12,15 @@ export function Game() {
   const setGameState = useStore((state) => state.setGameState);
   const gameDifficulty = useStore((state) => state.gameDifficulty);
   const playAreaSize = useStore((state) => state.playAreaSize);
+  const setGameRank = useStore((state) => state.setGameRank);
 
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       if (event.data.action === "exitAR") {
+        const userRank = event.data.userRank;
+        setGameRank(userRank);
         setGameState("inactive");
         setAppState(4);
       } else if (event.data.action === "change-settings") {

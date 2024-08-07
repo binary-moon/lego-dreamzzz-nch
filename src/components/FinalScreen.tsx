@@ -117,6 +117,7 @@ export const FinalScreen: React.FC = () => {
             variants={bottomToTopVariants}
             href="https://www.primevideo.com/dp/0G3TMG0K91CV2RBI29GCPXKN4L"
             target="_blank"
+            onClick={() => trackEvent("CTAButtonClicked")}
           >
             <img src={mainCTAButton} alt="Watch Lego Dreamzzz S2" />
           </motion.a>
