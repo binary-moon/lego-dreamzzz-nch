@@ -49,6 +49,16 @@ export const Intro = () => {
     },
   };
 
+  const glimmerAnimation = {
+    scale: [1.5, 1.7, 1.5, 1.5, 1.5, 1.7, 1.5],
+    opacity: [0.75, 0.4, 0, 0, 0, 0.4, 0.75],
+    transition: {
+      duration: 5,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  };
+
   const containerVariants = {
     hidden: {},
     visible: {
@@ -200,10 +210,8 @@ export const Intro = () => {
               alt="Dark Rock Island"
               variants={rightBottomToTopVariants}
             />
-            <motion.img
-              src={theNeverWitch}
-              className="absolute top-0 -right-[8dvw] w-[100dvh] h-auto object-contain"
-              alt="The Never Witch"
+            <motion.div
+              className="absolute top-0 right-[0dvw] w-[95dvw]"
               initial="hidden"
               animate={witchControls}
               variants={{
@@ -211,7 +219,21 @@ export const Intro = () => {
                 visible: witchEntryAnimation.visible,
                 floating: floatingAnimation,
               }}
-            />
+            >
+              <motion.img
+                src={theNeverWitch}
+                className="relative w-full h-auto object-contain"
+                alt="The Never Witch"
+              />
+              <motion.div
+                className="absolute top-[12.8dvw] left-[6.5dvw] w-[20dvw] h-[20dvw] rounded-full overflow-hidden"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(245,187,249,1) 0%, rgba(0,212,255,0) 40%)",
+                }}
+                animate={glimmerAnimation}
+              ></motion.div>
+            </motion.div>
           </motion.div>
         </div>
         <span className="flex flex-col items-end absolute right-8 top-[92px] -rotate-[8deg]">
