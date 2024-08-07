@@ -155,7 +155,7 @@ export const Intro = () => {
         >
           <motion.img
             src={spiral}
-            className="absolute top-[5vh] w-full h-auto right-0 object-contain mix-blend-multiply"
+            className="absolute top-[5vh] w-full h-auto right-0 object-contain mix-blend-multiply opacity-85"
             alt="spiral"
             animate={spiralRotationAnimation}
           />
