@@ -19,8 +19,34 @@
       type="font/otf"
       crossorigin="anonymous"
     />
+    <script>
+      !(function (w, d, s, t, a) {
+        if (w.amzn) return;
+        w.amzn = a = function () {
+          w.amzn.q.push([arguments, new Date().getTime()]);
+        };
+        a.q = [];
+        a.version = "0.0";
+        s = d.createElement("script");
+        s.src = "https://c.amazon-adsystem.com/aat/amzn.js";
+        s.id = "amzn-pixel";
+        s.async = true;
+        t = d.getElementsByTagName("script")[0];
+        t.parentNode.insertBefore(s, t);
+      })(window, document);
+      amzn("addTag", "48fb7038-2ad7-45b5-a3dc-5854c9745d82");
+      amzn("trackEvent", "PageView");
+    </script>
   </head>
   <body>
+    <noscript>
+      <img
+        src="https://s.amazon-adsystem.com/iu3?pid=48fb7038-2ad7-45b5-a3dc-5854c9745d82&event=PageView"
+        width="1"
+        height="1"
+        border="0"
+      />
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
