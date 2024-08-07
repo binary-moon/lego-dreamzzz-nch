@@ -6,6 +6,7 @@ import lightChracterIsland4 from "../assets/images/light_character_island_4.png"
 import relem from "../assets/images/Relem.png";
 import mateoPointingIsland from "../assets/images/Mateo_Pointing_Island.png";
 import rocks from "../assets/images/rocks.png";
+import blinking from "../assets/images/blinking.gif";
 
 import {
   containerVariants,
@@ -46,13 +47,22 @@ export const OnboardingStep3: React.FC = () => {
         variants={leftToRightVariants}
         animate={getFloatingAnimation(5, 1, 10)}
       />
-      <motion.img
-        src={mateoPointingIsland}
-        alt="Mateo Pointing Island"
-        className="absolute top-[36dvh] left-[28dvw] w-[60%] h-auto object-contain"
+      <motion.div
+        className="absolute top-[36dvh] left-[28dvw] w-[60%]"
         variants={leftToRightVariants}
         animate={getFloatingAnimation(4, 0, 20)}
-      />
+      >
+        <img
+          src={mateoPointingIsland}
+          alt="Mateo Pointing Island"
+          className="w-full h-auto object-contain"
+        />
+        <img
+          src={blinking}
+          alt="blinking"
+          className="absolute top-0 left-0 w-[29%] h-auto object-contain"
+        />
+      </motion.div>
       <motion.img
         src={onboardSpeechCloud3}
         alt="Help us catch her and the nightmare creatures"

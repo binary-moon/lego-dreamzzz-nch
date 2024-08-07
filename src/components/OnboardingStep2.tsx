@@ -8,6 +8,7 @@ import mateoPointingIsland from "../assets/images/Mateo_Pointing_Island.png";
 import darkRockIsland from "../assets/images/dark-rock-island.png";
 import theNeverWitch2 from "../assets/images/The_Never_Witch_2.png";
 import onboardSpeechCloud2 from "../assets/images/Onboard_Speech_Cloud_2.svg";
+import blinking from "../assets/images/blinking.gif";
 
 import {
   containerVariants,
@@ -54,13 +55,22 @@ export const OnboardingStep2: React.FC = () => {
         variants={leftToRightVariants}
         animate={getFloatingAnimation(5, 0, 10)}
       />
-      <motion.img
-        src={mateoPointingIsland}
-        alt="Mateo Pointing Island"
-        className="absolute top-[38dvh] left-[5dvw] w-[40%] h-auto object-contain"
+      <motion.div
+        className="absolute top-[38dvh] left-[5dvw] w-[40%]"
         variants={leftToRightVariants}
         animate={getFloatingAnimation(5, 1, 10)}
-      />
+      >
+        <img
+          src={mateoPointingIsland}
+          alt="Mateo Pointing Island"
+          className="w-full h-auto object-contain"
+        />
+        <img
+          src={blinking}
+          alt="blinking"
+          className="absolute top-0 left-0 w-[29%] h-auto object-contain"
+        />
+      </motion.div>
       <motion.img
         src={darkRockIsland}
         className="absolute -bottom-[7dvh] -right-[10dvw] w-[70dvw] h-auto object-contain"
