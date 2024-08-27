@@ -154,7 +154,7 @@ export const Onboarding: React.FC<Props> = () => {
           <motion.div variants={bottomToTopVariants}>
             <Button
               className="w-[66dvw]"
-              text="Play Now"
+              text="Skip Intro"
               onClick={handleNext}
             />
           </motion.div>

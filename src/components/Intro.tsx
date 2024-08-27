@@ -255,7 +255,7 @@ export const Intro = () => {
         >
           <Button
             className="w-[66dvw]"
-            text="Start!"
+            text="Start Game"
             onClick={() => setAppState(1)}
           />
         </motion.div>
