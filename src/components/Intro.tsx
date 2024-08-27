@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { motion, useAnimationControls, AnimatePresence } from "framer-motion";
+import { useStore } from "../useStore";
 
 import logo from "../assets/images/lego-lockup.png";
 import background from "../assets/images/sky-background.jpg";
@@ -15,11 +16,10 @@ import spiral from "../assets/images/spiral.png";
 
 import { Button } from "./Button";
 import { GlowingText } from "./GlowingText";
-import { TCModal } from "./TCModal";
 
 export const Intro = () => {
-  const [isTCShown, setIsTCShown] = useState(false);
   const witchControls = useAnimationControls();
+  const setAppState = useStore((state) => state.setAppState);
 
   const floatingAnimation = {
     y: [0, -20, 0],
@@ -256,19 +256,9 @@ export const Intro = () => {
           <Button
             className="w-[66dvw]"
             text="Start!"
-            onClick={() => setIsTCShown(true)}
+            onClick={() => setAppState(1)}
           />
         </motion.div>
-        {isTCShown && (
-          <motion.div
-            className="w-full h-full absolute top-0 left-0 py-8 px-6 "
-            animate={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.3, easeInOut: "spring" }}
-          >
-            <TCModal />
-          </motion.div>
-        )}
       </AnimatePresence>
     </div>
   );

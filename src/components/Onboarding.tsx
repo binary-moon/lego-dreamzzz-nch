@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import logo from "../assets/images/lego-lockup.png";
@@ -10,8 +10,10 @@ import { OnboardingStep1 } from "./OnboardingStep1";
 import { OnboardingStep2 } from "./OnboardingStep2";
 import { OnboardingStep3 } from "./OnboardingStep3";
 import { Button } from "./Button";
+import { TCModal } from "./TCModal";
 
 import { useStore } from "../useStore";
+import { trackEvent } from "../utilities/tracking";
 
 import {
   containerVariants,
@@ -24,20 +26,40 @@ interface Props {
 
 export const Onboarding: React.FC<Props> = () => {
   const [onboardingPage, setOnboardingPage] = useState(0);
-  const setAppState = useStore((state) => state.setAppState);
+  const [isTCShown, setIsTCShown] = useState(false);
+  const setGameState = useStore((state) => state.setGameState);
 
   const handleNext = () => {
-    if (onboardingPage !== 2) {
-      setOnboardingPage((prev) => prev + 1);
-    } else {
-      setAppState(2);
-    }
+    setGameState("on");
   };
 
   const backgroundPositions: { [key: number]: string } = {
     0: "0% 50%", // bg-left
     1: "100% 50%", // bg-right
     2: "0% 50%", // bg-left
+  };
+
+  useEffect(() => {
+    trackEvent("IntroPage");
+    const interval = setInterval(() => {
+      setOnboardingPage((prevPage) => {
+        if (prevPage === 2) {
+          clearInterval(interval);
+          return prevPage;
+        } else {
+          return prevPage + 1;
+        }
+      });
+    }, 3000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  const handleTCPopup = () => {
+    setIsTCShown(true);
+    trackEvent("TCPopup");
   };
 
   return (
@@ -130,19 +152,28 @@ export const Onboarding: React.FC<Props> = () => {
             ></span>
           </motion.div>
           <motion.div variants={bottomToTopVariants}>
-            <Button className="w-[66dvw]" text="Next" onClick={handleNext} />
+            <Button
+              className="w-[66dvw]"
+              text="Play Now"
+              onClick={handleNext}
+            />
           </motion.div>
           <motion.div variants={bottomToTopVariants}>
-            {onboardingPage !== 2 && (
-              <button
-                className="italic font-black"
-                onClick={() => setAppState(2)}
-              >
-                SKIP INTRO →
-              </button>
-            )}
+            <button className="italic font-black" onClick={handleTCPopup}>
+              Read T&Cs →
+            </button>
           </motion.div>
         </motion.div>
+        {isTCShown && (
+          <motion.div
+            className="w-full h-full absolute top-0 left-0 py-8 px-6 "
+            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3, easeInOut: "spring" }}
+          >
+            <TCModal />
+          </motion.div>
+        )}
       </AnimatePresence>
     </div>
   );

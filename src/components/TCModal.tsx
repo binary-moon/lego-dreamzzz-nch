@@ -5,7 +5,7 @@ import { Button } from "./Button";
 import { useStore } from "../useStore";
 
 export const TCModal: React.FC = () => {
-  const setAppState = useStore((state) => state.setAppState);
+  const setGameState = useStore((state) => state.setGameState);
 
   const itemStyles = "text-body text-[20px]/[23px] text-left mb-2";
 
@@ -45,7 +45,7 @@ export const TCModal: React.FC = () => {
         <Button
           className="w-[66dvw]"
           text="I Understand"
-          onClick={() => setAppState(1)}
+          onClick={() => setGameState("on")}
         />
       </motion.div>
     </div>

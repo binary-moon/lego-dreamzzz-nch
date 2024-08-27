@@ -25,7 +25,7 @@ import {
   bottomToTopRotatedVariants,
 } from "../utilities/animations";
 
-import { trackEvent } from "../utilities/tracking";
+import { trackEvent, trackGAEvent } from "../utilities/tracking";
 
 import { useStore } from "../useStore";
 
@@ -35,6 +35,7 @@ export const FinalScreen: React.FC = () => {
 
   useEffect(() => {
     trackEvent("GameEnd", { rank: gameRank });
+    trackGAEvent("GameEnd");
   }, [gameRank]);
 
   return (

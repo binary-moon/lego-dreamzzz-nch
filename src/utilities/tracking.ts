@@ -5,3 +5,7 @@ export const trackEvent = (
 ) => {
   window.amzn("trackEvent", name, properties);
 };
+
+export const trackGAEvent = (name: string) => {
+  window.gtag("event", name);
+};
