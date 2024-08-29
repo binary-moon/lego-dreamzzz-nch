@@ -1,35 +1,119 @@
 <!doctype html>
 <html>
 <head>
-    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover' />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta charset='utf-8'>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="manifest" href="manifest.json">
     <style></style>
-    <title>Amazon_Lego_AR_Tracking</title>
+    <title>Amazon_Lego_AR</title>
     <script src="https://cdn.8thwall.com/web/xrextras/xrextras.js"></script>
     <script src="https://apps.8thwall.com/xrweb?appKey=m7IAiDWnYFJ90ENyTVY2xT8YTvhraMMMz9LnEnps8w1pJI6ceDW9YMDsk4iyJhc51lmGTM"></script>
     <script src="https://cdn.8thwall.com/web/landing-page/landing-page.js"></script>
     <script src="https://cdn.8thwall.com/web/coaching-overlay/coaching-overlay.js"></script>
     <script src="playcanvas-stable.min.js"></script>
     <script src="__settings__.js"></script>
+    
     <script>
-      !(function (w, d, s, t, a) {
-        if (w.amzn) return;
-        w.amzn = a = function () {
-          w.amzn.q.push([arguments, new Date().getTime()]);
-        };
-        a.q = [];
-        a.version = "0.0";
-        s = d.createElement("script");
-        s.src = "https://c.amazon-adsystem.com/aat/amzn.js";
-        s.id = "amzn-pixel";
-        s.async = true;
-        t = d.getElementsByTagName("script")[0];
-        t.parentNode.insertBefore(s, t);
-      })(window, document);
-      amzn("addTag", "48fb7038-2ad7-45b5-a3dc-5854c9745d82");
-    </script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Wait for the divs to be added to the DOM
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList') {
+                // Check if #loadBackground is added
+                const loadBackground = document.querySelector('#loadBackground');
+                if (loadBackground && !document.querySelector('#logo')) {
+                    // Create the logo element
+                    const logo = document.createElement('img');
+                    logo.src = 'images/Header_Logo.png';
+                    logo.id = 'logo';
+                    logo.alt = 'Logo';
+                    loadBackground.appendChild(logo); // Append the logo to #loadBackground
+
+                    // Create the Load_Tip image element
+                    const loadTip = document.createElement('img');
+                    loadTip.src = 'images/Load_Tip.png';
+                    loadTip.id = 'loadTip';
+                    loadTip.alt = 'Loading Tip';
+                    loadTip.style.position = 'absolute';
+                    loadTip.style.top = 'calc(20px + 100px)'; // Adjust to position it below the logo
+                    loadTip.style.left = '50%';
+                    loadTip.style.transform = 'translateX(-50%)';
+                    loadTip.style.width = '300px'; // Adjust the size of your Load_Tip as needed
+                    loadTip.style.zIndex = '1'; // Ensure it appears above the background
+
+                    loadBackground.appendChild(loadTip); // Append the Load_Tip image to #loadBackground
+                }
+            }
+        });
+    });
+
+    // Start observing changes in the body for dynamically added elements
+    observer.observe(document.body, { childList: true, subtree: true });
+});
+</script>
+
+
+    <!-- CSS styles directly in the HTML -->
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            touch-action: manipulation; /* Prevents double-tap zoom */
+        }
+        
+        #loadImage {
+            margin-top: 0 !important;
+            margin-left: 0 !important;
+        }
+
+        #loadBackground {
+            background-image: url('images/Background_Pattern.png');
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        #requestingCameraPermissions {
+            color: transparent !important;
+            background-color: transparent !important;
+        }
+
+        #requestingCameraIcon {
+            display: none !important;
+        }
+
+        .prompt-box-8w {
+            background-color: white;
+            color: #00FF00;
+        }
+
+        .prompt-button-8w {
+            background-color: #0000FF;
+        }
+
+        .button-primary-8w {
+            background-color: #5c5b5b !important;
+        }
+        
+        #logo {
+            position: absolute;
+            top: 20px; /* Adjust this value to position the logo vertically */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 190px; /* Adjust the size of your logo as needed */
+            height: auto;
+            z-index: 1; /* Ensure it appears above the background */
+        }
+    </style>
 </head>
 <body>
     <script src="__modules__.js"></script>
