@@ -13,6 +13,24 @@
     <script src="https://cdn.8thwall.com/web/coaching-overlay/coaching-overlay.js"></script>
     <script src="playcanvas-stable.min.js"></script>
     <script src="__settings__.js"></script>
+
+    <script>
+      !(function (w, d, s, t, a) {
+        if (w.amzn) return;
+        w.amzn = a = function () {
+          w.amzn.q.push([arguments, new Date().getTime()]);
+        };
+        a.q = [];
+        a.version = "0.0";
+        s = d.createElement("script");
+        s.src = "https://c.amazon-adsystem.com/aat/amzn.js";
+        s.id = "amzn-pixel";
+        s.async = true;
+        t = d.getElementsByTagName("script")[0];
+        t.parentNode.insertBefore(s, t);
+      })(window, document);
+      amzn("addTag", "48fb7038-2ad7-45b5-a3dc-5854c9745d82");
+    </script>
     
     <script>
 document.addEventListener('DOMContentLoaded', function() {
